@@ -3,7 +3,7 @@ SSVEP Stimulator using MATLAB and Psychtoolbox
 
 This is a 4 classes (or more) flickering stimulator for Steady State Evoked Potential experiment. The software generate four different target as can be seen in this video.
 [Youtube demo video](https://www.youtube.com/watch?v=HriCj1_7jdI)
-This tool presents a stable flickering frequency which is usable for BCI application. Tests was
+This tool presents a stable flickering frequencies which are usable for BCI applications.
 
 **Key parameters** 
 + Current supported target: 4 different frequencies
