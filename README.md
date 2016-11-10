@@ -24,13 +24,13 @@ This tool presents a stable flickering frequencies which are usable for BCI appl
  + The methodology of this software
  https://beta.groups.yahoo.com/neo/groups/PSYCHTOOLBOX/conversations/topics/20675
 
- **Credits**
+**Credits**
  + Josh, LCMS Matlab function (Least Common Multiple Set): https://www.mathworks.com/matlabcentral/fileexchange/24670-least-common-multiple-set
  + Hubert Cecotti, Ivan Volosyak, Axel Graser. Reliable visual stimuli on LCD screens for SSVEP
 based BCI. The 2010 European Signal Processing Conference (EUSIPCO-2010), Aug 2010, Aalborg, Denmark. 
  + Psychtoolbox 3. 
  
- **LICENSE - "MIT License"**
+**LICENSE - "MIT License"**
  
  Author: Bob and you.
 
