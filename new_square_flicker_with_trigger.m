@@ -1,4 +1,4 @@
-function new_square_flicker_test()
+function new_square_flicker_with_trigger()
     %%Initiate frequency
     % Frames Period Freq. Simulated signal. 0 light. 1 dark
     % [#] [ms] [Hz] [-] 
