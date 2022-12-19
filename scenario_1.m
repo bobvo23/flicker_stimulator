@@ -18,12 +18,12 @@ function scenario_1(freqCombine,lcmFreq)
     flicker_time=4
 
     %%% set trigger 
-    % SendTrigger=1;
-    % if SendTrigger==1
-    %     ioObj = io64;
-    %     status = io64(ioObj);
-    %     address = hex2dec('3FD8'); %standard LPT1 output port address
-    % end
+    SendTrigger=1;
+    if SendTrigger==1
+        ioObj = io64;
+        status = io64(ioObj);
+        address = hex2dec('3FD8'); %standard LPT1 output port address
+    end
     
     try
         myScreen = max(Screen('Screens'));
@@ -64,7 +64,7 @@ function scenario_1(freqCombine,lcmFreq)
         pwd % current folder address
 
         % set trigger to 0
-        % io64(ioObj,address,0);
+        io64(ioObj,address,0);
 
         % continue after rest_time for rest purpose
         WaitSecs(rest_time-1);
@@ -80,7 +80,7 @@ function scenario_1(freqCombine,lcmFreq)
 
 
         % set trigger to 4
-        % io64(ioObj,address,4);
+        io64(ioObj,address,4);
 
         % loop swapping buffers, checking keyboard, and checking time
         % param 2 denotes "dont clear buffer on flip", i.e., we alternate
@@ -133,7 +133,7 @@ function scenario_1(freqCombine,lcmFreq)
         end
 
         % set trigger to 0    
-        % io64(ioObj,address,0);
+        io64(ioObj,address,0);
     
         % continue after rest_time for rest purpose
         WaitSecs(rest_time-1);
@@ -148,7 +148,7 @@ function scenario_1(freqCombine,lcmFreq)
         WaitSecs(1);
     
         % set trigger to 4
-        % io64(ioObj,address,6);
+        io64(ioObj,address,6);
         
         % flicker target 3
         time = clock;
@@ -185,7 +185,7 @@ function scenario_1(freqCombine,lcmFreq)
         end
     
         % set trigger to 0  
-        % io64(ioObj,address,0);
+        io64(ioObj,address,0);
     
         % continue after rest_time for rest purpose
         WaitSecs(rest_time-1);
@@ -200,7 +200,7 @@ function scenario_1(freqCombine,lcmFreq)
         WaitSecs(1);
         
         % set trigger to 8
-        % io64(ioObj,address,8);
+        io64(ioObj,address,8);
 
         % flicker target 2
         time = clock;
@@ -239,7 +239,7 @@ function scenario_1(freqCombine,lcmFreq)
         end
 
         % set trigger to 0  
-        % io64(ioObj,address,0);
+        io64(ioObj,address,0);
         
         % continue after rest_time for rest purpose
         WaitSecs(rest_time-1);
@@ -254,7 +254,7 @@ function scenario_1(freqCombine,lcmFreq)
         WaitSecs(1);
      
         % set trigger to 10
-        % io64(ioObj,address,10);
+        io64(ioObj,address,10);
 
         % flicker target 1
         time = clock;
@@ -292,7 +292,7 @@ function scenario_1(freqCombine,lcmFreq)
         end
 
         % set trigger to 0       
-        % io64(ioObj,address,0);   %output command    
+        io64(ioObj,address,0);   %output command    
      
         
         %%m wait for end after pressing the space key
