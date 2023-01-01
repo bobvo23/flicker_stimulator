@@ -36,4 +36,5 @@ freqCombine = 1 - freqCombine;
 %scenario_without_trigger(freqCombine,lcmFreq)
 %scenario_0(freqCombine,lcmFreq)
 %scenario_1(freqCombine,lcmFreq)
-scenario_2(freqCombine,lcmFreq)
+%scenario_2(freqCombine,lcmFreq)
+scenario_3(freqCombine,lcmFreq)
