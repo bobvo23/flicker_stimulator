@@ -18,8 +18,10 @@ function scenario_3(freqCombine, lcmFreq)
 
     if (random_rest_time_enable == 1)
         rest_time = [1:6];
+        random_rest_time = randsample(rest_time, size(rest_time, 2));
     else
         rest_time = 6;
+        random_rest_time = rest_time;
     end
 
     %Set flicker time
@@ -27,8 +29,10 @@ function scenario_3(freqCombine, lcmFreq)
 
     if (random_flicker_time_enable == 1)
         flicker_time = [1:5];
+        random_flicker_time = randsample(flicker_time, size(flicker_time, 2));
     else
         flicker_time = 4;
+        random_flicker_time = flicker_time;
     end
 
     % do you want to show target in random order!
@@ -37,7 +41,7 @@ function scenario_3(freqCombine, lcmFreq)
     if (random_target_enable == 1)
         random_target = randsample([1:4], 4);
     end
-
+    
     %Set repeat
     repeat_all = 1;
 
@@ -92,20 +96,6 @@ function scenario_3(freqCombine, lcmFreq)
         % Define keyboard keys
         KbName('UnifyKeyNames');
         escKey = KbName('ESCAPE');
-
-        % select random or fix mode for flicker time
-        if (random_flicker_time_enable == 1)
-            random_flicker_time = randsample(flicker_time, size(flicker_time, 2));
-        else
-            random_flicker_time = flicker_time;
-        end
-
-        % select random or fix mode for rest time
-        if (random_rest_time_enable == 1)
-            random_rest_time = randsample(rest_time, size(rest_time, 2));
-        else
-            random_rest_time = rest_time;
-        end
 
         % repeat process
         for k = 1:repeat_all
