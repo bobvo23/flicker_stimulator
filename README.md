@@ -15,23 +15,20 @@ This tool presents a stable flickering frequencies which are usable for BCI appl
 + System Requirements: any Nvidia or AMD graphic card, built-in Intel graphic cards do not work properbly (more at Psychtoolbox website)
 
 **How to use**
-+ Install Psychtoolbox 3
++ Install Psychtoolbox 3 [You can see mohi-docs! repo](https://github.com/mohammaddehnavi/mohi-docs/tree/main/Matlab#install-psychtoolbox-manually)
 + Download this repository to your computer 
-+ Add lcms.m and square_flicker.m to MATLab searching directory
-+ Run square_flicker function. A window with 4 flickering frequency should be appeared on your desktop.
-
-**Discussion**
- + The methodology of this software
- https://beta.groups.yahoo.com/neo/groups/PSYCHTOOLBOX/conversations/topics/20675
++ Go to this repository folder from matlab
++ Set your scenario function at the end of the new_square_flicker.
++ Run new_square_flicker.
 
 **Credits**
  + Josh, LCMS Matlab function (Least Common Multiple Set): https://www.mathworks.com/matlabcentral/fileexchange/24670-least-common-multiple-set
  + Hubert Cecotti, Ivan Volosyak, Axel Graser. Reliable visual stimuli on LCD screens for SSVEP
 based BCI. The 2010 European Signal Processing Conference (EUSIPCO-2010), Aug 2010, Aalborg, Denmark. 
- + Psychtoolbox 3. 
- 
+ + Psychtoolbox 3.
+ + Mohammad Torkaman Dehnavi, write scenarios and refactor square_flicker for using multiple scenarios.
+
 **LICENSE - "MIT License"**
- 
  Author: Bob and you.
 
  
