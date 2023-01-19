@@ -13,10 +13,25 @@
 function scenario_3(freqCombine, lcmFreq)
 
     %Set user rest time
-    rest_time = [1 2 3 4 5 6];
+    random_rest_time_enable=1;
+
+    if (random_rest_time_enable == 1)
+        rest_time = [1:6];
+    else
+        rest_time = 6;
+    end
 
     %Set flicker time
-    flicker_time = [1 2 3 4 5 6 7 8 9];
+    random_flicker_time_enable=1;
+
+    if (random_flicker_time_enable == 1)
+        flicker_time = [1:5];
+    else
+        flicker_time = 4;
+    end
+
+    % do you want to show target in random order!
+    random_target_enable=0
 
     %Set repeat
     repeat_all = 2;
@@ -26,11 +41,11 @@ function scenario_3(freqCombine, lcmFreq)
 
     %%% set trigger
     SendTrigger=1;
-    if SendTrigger==1
-       ioObj = io64;
-       status = io64(ioObj);
-       address = hex2dec('3FD8'); %standard LPT1 output port address
-    end
+    % if SendTrigger==1
+    %    ioObj = io64;
+    %    status = io64(ioObj);
+    %    address = hex2dec('3FD8'); %standard LPT1 output port address
+    % end
 
     try
         %%%% Screen('Preference', 'SkipSyncTests', 1);
@@ -71,8 +86,19 @@ function scenario_3(freqCombine, lcmFreq)
         KbName('UnifyKeyNames');
         escKey = KbName('ESCAPE');
 
-        random_flicker_time = randsample(flicker_time, size(flicker_time, 2));
-        random_rest_time = randsample(rest_time, size(rest_time, 2));
+        % select random or fix mode for flicker time
+        if (random_flicker_time_enable == 1)
+            random_flicker_time = randsample(flicker_time, size(flicker_time, 2));
+        else
+            random_flicker_time = flicker_time;
+        end
+        
+        % select random or fix mode for rest time
+        if (random_rest_time_enable == 1)
+            random_rest_time = randsample(rest_time, size(rest_time, 2));
+        else
+            random_rest_time = rest_time;
+        end           
 
         % repeat process
         for k = 1:repeat_all
@@ -91,7 +117,7 @@ function scenario_3(freqCombine, lcmFreq)
                     pwd % current folder address
 
                     % set trigger to 0
-                    io64(ioObj,address,0);
+                    % io64(ioObj,address,0);
 
                     % continue after rest_time for rest purpose
                     if rest_time ~= 1
@@ -112,7 +138,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 4
-                    io64(ioObj,address,4);
+                    % io64(ioObj,address,4);
 
                     % loop swapping buffers, checking keyboard, and checking time
                     % param 2 denotes "dont clear buffer on flip", i.e., we alternate
@@ -165,7 +191,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 0
-                    io64(ioObj,address,0);
+                    % io64(ioObj,address,0);
 
                     % continue after rest_time for rest purpose
                     if rest_time ~= 1
@@ -186,7 +212,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 4
-                    io64(ioObj,address,6);
+                    % io64(ioObj,address,6);
 
                     % flicker target 3
                     time = clock;
@@ -223,7 +249,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 0
-                    io64(ioObj,address,0);
+                    % io64(ioObj,address,0);
 
                     % continue after rest_time for rest purpose
                     if rest_time ~= 1
@@ -244,7 +270,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 8
-                    io64(ioObj,address,8);
+                    % io64(ioObj,address,8);
 
                     % flicker target 2
                     time = clock;
@@ -283,7 +309,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 0
-                    io64(ioObj,address,0);
+                    % io64(ioObj,address,0);
 
                     % continue after rest_time for rest purpose
                     if rest_time ~= 1
@@ -305,7 +331,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 10
-                    io64(ioObj,address,10);
+                    % io64(ioObj,address,10);
 
                     % flicker target 1
                     time = clock;
@@ -343,7 +369,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 0
-                    io64(ioObj,address,0);   %output command
+                    % io64(ioObj,address,0);   %output command
 
                     % continue after rest_time for rest purpose
                     if rest_time ~= 1
