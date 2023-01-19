@@ -116,13 +116,6 @@ function scenario_3(freqCombine, lcmFreq)
                     % set trigger to 0
                     % io64(ioObj,address,0);
 
-                    % continue after rest_time for rest purpose
-                    if rest_time ~= 1
-                        WaitSecs(rest_time - 1);
-                    else
-                        WaitSecs(1);
-                    end
-
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
 
@@ -225,13 +218,6 @@ function scenario_3(freqCombine, lcmFreq)
                     % set trigger to 0
                     % io64(ioObj,address,0);
 
-                    % continue after rest_time for rest purpose
-                    if rest_time ~= 1
-                        WaitSecs(rest_time - 1);
-                    else
-                        WaitSecs(1);
-                    end
-
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
 
@@ -317,13 +303,6 @@ function scenario_3(freqCombine, lcmFreq)
 
                     % set trigger to 0
                     % io64(ioObj,address,0);
-
-                    % continue after rest_time for rest purpose
-                    if rest_time ~= 1
-                        WaitSecs(rest_time - 1);
-                    else
-                        WaitSecs(1);
-                    end
 
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
@@ -413,13 +392,6 @@ function scenario_3(freqCombine, lcmFreq)
                     % set trigger to 0
                     % io64(ioObj,address,0);
 
-                    % continue after rest_time for rest purpose
-                    if rest_time ~= 1
-                        WaitSecs(rest_time - 1);
-                    else
-                        WaitSecs(1);
-                    end
-
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
 
@@ -506,13 +478,6 @@ function scenario_3(freqCombine, lcmFreq)
 
                     % set trigger to 0
                     % io64(ioObj,address,0);
-
-                    % continue after rest_time for rest purpose
-                    if rest_time ~= 1
-                        WaitSecs(rest_time - 1);
-                    else
-                        WaitSecs(1);
-                    end
 
                     % show image for 1 second
                     Start = imread([pwd, '/', 'end_after_1_sec.png']);
