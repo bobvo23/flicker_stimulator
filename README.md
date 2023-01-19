@@ -29,6 +29,7 @@ based BCI. The 2010 European Signal Processing Conference (EUSIPCO-2010), Aug 20
  + Mohammad Torkaman Dehnavi, write scenarios and refactor square_flicker for using multiple scenarios.
 
 **LICENSE - "MIT License"**
- Author: Bob and you.
+
+ + Author: Bob and you.
 
  
