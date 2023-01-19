@@ -15,7 +15,7 @@ This tool presents a stable flickering frequencies which are usable for BCI appl
 + System Requirements: any Nvidia or AMD graphic card, built-in Intel graphic cards do not work properbly (more at Psychtoolbox website)
 
 **How to use**
-+ Install Psychtoolbox 3 - [If You are a Linux user :smile: , You can see mohi-docs! repo](https://github.com/mohammaddehnavi/mohi-docs/tree/main/Matlab#install-psychtoolbox-manually)
++ Install Psychtoolbox 3 - [If You are a Linux user :wink: , You can see mohi-docs! repo](https://github.com/mohammaddehnavi/mohi-docs/tree/main/Matlab#install-psychtoolbox-manually)
 + Download this repository to your computer 
 + Go to this repository folder from matlab
 + Set your scenario function at the end of the new_square_flicker.
