@@ -14,6 +14,11 @@ This tool presents a stable flickering frequencies which are usable for BCI appl
 + Psychtoolbox 3: http://psychtoolbox.org/
 + System Requirements: any Nvidia or AMD graphic card, built-in Intel graphic cards do not work properbly (more at Psychtoolbox website)
 
+
+**Trigger:**
++ We use io64 to send triggers to our EEG recorder hardware in scenarios for new_square_flicker. [You can see this link for io64](https://sites.google.com/a/brown.edu/lncc/home/Lab-Wiki/eeg/exp_setup)
++ If you don't want to send a trigger or don't have io64 in your Matlab, please commented on all lines that have "io64".
+
 **How to use**
 + Install Psychtoolbox 3 - [If You are a Linux user :wink: , You can see mohi-docs! repo](https://github.com/mohammaddehnavi/mohi-docs/tree/main/Matlab#install-psychtoolbox-manually)
 + Download this repository to your computer 
