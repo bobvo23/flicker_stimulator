@@ -12,6 +12,7 @@
 
 function scenario_3(freqCombine, lcmFreq)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SET TEST PARAMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %Set user rest time
     random_rest_time_enable = 0;
 
@@ -50,7 +51,9 @@ function scenario_3(freqCombine, lcmFreq)
     %    status = io64(ioObj);
     %    address = hex2dec('3FD8'); %standard LPT1 output port address
     % end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SECTION SET TEST PARAMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION MAIN TRY CATCH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     try
         %%%% Screen('Preference', 'SkipSyncTests', 1);
         myScreen = max(Screen('Screens'));
@@ -157,6 +160,7 @@ function scenario_3(freqCombine, lcmFreq)
                     % flicker target 4
                     time = clock;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SHOWING TARGET 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     while (etime(clock, time) < flicker_time) && ~keyCode(escKey)
 
                         % Drawing
@@ -226,6 +230,7 @@ function scenario_3(freqCombine, lcmFreq)
 
                         [keyIsDown, secs, keyCode] = KbCheck;
                     end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SECTION SHOWING TARGET 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%                    
 
                     % set trigger to 0
                     % io64(ioObj,address,0);
@@ -252,6 +257,7 @@ function scenario_3(freqCombine, lcmFreq)
                     % flicker target 3
                     time = clock;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SHOWING TARGET 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     while (etime(clock, time) < flicker_time) && ~keyCode(escKey)
                         % Drawing
                         %Compute texture value based on display value from freq long matrixes
@@ -317,6 +323,7 @@ function scenario_3(freqCombine, lcmFreq)
 
                         [keyIsDown, secs, keyCode] = KbCheck;
                     end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EDN SECTION SHOWING TARGET 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%                    
 
                     % set trigger to 0
                     % io64(ioObj,address,0);
@@ -343,6 +350,7 @@ function scenario_3(freqCombine, lcmFreq)
                     % flicker target 2
                     time = clock;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SHOWING TARGET 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%                    
                     while (etime(clock, time) < flicker_time) && ~keyCode(escKey)
                         % Drawing
                         %Compute texture value based on display value from freq long matrixes
@@ -410,6 +418,7 @@ function scenario_3(freqCombine, lcmFreq)
 
                         [keyIsDown, secs, keyCode] = KbCheck;
                     end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SECTION SHOWING TARGET 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%                    
 
                     % set trigger to 0
                     % io64(ioObj,address,0);
@@ -436,6 +445,7 @@ function scenario_3(freqCombine, lcmFreq)
                     % flicker target 1
                     time = clock;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SHOWING TARGET 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%                      
                     while (etime(clock, time) < flicker_time) && ~keyCode(escKey)
                         % Drawing
                         %Compute texture value based on display value from freq long matrixes
@@ -502,6 +512,7 @@ function scenario_3(freqCombine, lcmFreq)
 
                         [keyIsDown, secs, keyCode] = KbCheck;
                     end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SECTION SHOWING TARGET 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
 
                     % set trigger to 0
                     % io64(ioObj,address,0);
@@ -538,6 +549,7 @@ function scenario_3(freqCombine, lcmFreq)
         Screen('Close');
         psychrethrow(psychlasterror);
     end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SECTION MAIN TRY CATCH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 
     Screen('CloseAll');
     Screen('Close');
