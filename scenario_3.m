@@ -1,19 +1,19 @@
 %% Scenario 3
 % start
-% flicker frequency_4 for random_flicker_time
+% flicker frequency_4 or random target for random_flicker_time
 % continue after random_rest_time for rest purpose
-% flicker frequency_3 for random_flicker_time
+% flicker frequency_4 or random target for random_flicker_time
 % continue after random_rest_time for rest purpose
-% flicker frequency_2 for random_flicker_time
+% flicker frequency_4 or random target for random_flicker_time
 % continue after random_rest_time for rest purpose
-% flicker frequency_1 for random_flicker_time
+% flicker frequency_4 or random target for random_flicker_time
 % continue after random_rest_time for rest purpose
 % continue the above process for the value of repeat_all
 
 function scenario_3(freqCombine, lcmFreq)
 
     %Set user rest time
-    random_rest_time_enable=1;
+    random_rest_time_enable = 0;
 
     if (random_rest_time_enable == 1)
         rest_time = [1:6];
@@ -22,7 +22,7 @@ function scenario_3(freqCombine, lcmFreq)
     end
 
     %Set flicker time
-    random_flicker_time_enable=1;
+    random_flicker_time_enable = 0;
 
     if (random_flicker_time_enable == 1)
         flicker_time = [1:5];
@@ -31,16 +31,20 @@ function scenario_3(freqCombine, lcmFreq)
     end
 
     % do you want to show target in random order!
-    random_target_enable=0
+    random_target_enable = 1
+
+    if (random_target_enable == 1)
+        random_target = randsample([1:4], 4);
+    end
 
     %Set repeat
-    repeat_all = 2;
+    repeat_all = 1;
 
     % full screen
     full_screen = 0; % 1 for full screen, 0 for other
 
     %%% set trigger
-    SendTrigger=1;
+    SendTrigger = 1;
     % if SendTrigger==1
     %    ioObj = io64;
     %    status = io64(ioObj);
@@ -92,13 +96,13 @@ function scenario_3(freqCombine, lcmFreq)
         else
             random_flicker_time = flicker_time;
         end
-        
+
         % select random or fix mode for rest time
         if (random_rest_time_enable == 1)
             random_rest_time = randsample(rest_time, size(rest_time, 2));
         else
             random_rest_time = rest_time;
-        end           
+        end
 
         % repeat process
         for k = 1:repeat_all
@@ -125,6 +129,7 @@ function scenario_3(freqCombine, lcmFreq)
                     else
                         WaitSecs(1);
                     end
+
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
 
@@ -136,9 +141,6 @@ function scenario_3(freqCombine, lcmFreq)
                     if rest_time ~= 1
                         WaitSecs(1);
                     end
-
-                    % set trigger to 4
-                    % io64(ioObj,address,4);
 
                     % loop swapping buffers, checking keyboard, and checking time
                     % param 2 denotes "dont clear buffer on flip", i.e., we alternate
@@ -164,8 +166,43 @@ function scenario_3(freqCombine, lcmFreq)
                         % flicker 4 targets
                         %%%%%%% textureValue = textureValue(4)+textureValue(3)+textureValue(2)+ textureValue(1) +1;
 
-                        % flicker only one target
-                        textureValue = textureValue(4) + 1;
+                        % flicker only one target with random or none random
+                        if (random_target_enable == 0)
+                            textureValue = textureValue(4) + 1;
+                            % set trigger to 4
+                            trigger_value = 4;
+                            % io64(ioObj,address,trigger_value);
+                        else
+                            textureValue = textureValue(random_target(4)) + 1;
+
+                            % select trigger value (4+1 for 6.66Hz, 6+1 for 7.50Hz, 8+1 for 8.57Hz, 10+1 for 10Hz)
+                            %%% In our EEG recorder system, base trigger value is 1, when we set trigger value to 4, it save 4 + 1
+                            %%% then for 6.66Hz ---> trigger value is 5
+                            %%% then for 7.50Hz ---> trigger value is 7
+                            %%% then for 8.57Hz ---> trigger value is 9
+                            %%% then for 10Hz ---> trigger value is 11
+                            switch random_target(4)
+                                case 4
+                                    % set trigger to 4
+                                    trigger_value = 4;
+                                    % io64(ioObj,address,trigger_value);
+                                case 3
+                                    % set trigger to 6
+                                    trigger_value = 6;
+                                    % io64(ioObj,address,trigger_value);
+                                case 2
+                                    % set trigger to 8
+                                    trigger_value = 8;
+                                    % io64(ioObj,address,trigger_value);
+                                otherwise
+                                    % set trigger to 10
+                                    trigger_value = 10;
+                                    % io64(ioObj,address,trigger_value);
+                            end
+
+                        end
+
+                        disp(['Trigger value is: ', num2str(trigger_value)])
 
                         %Draw it on the back buffer
                         Screen('DrawTexture', win, texture(textureValue));
@@ -199,6 +236,7 @@ function scenario_3(freqCombine, lcmFreq)
                     else
                         WaitSecs(1);
                     end
+
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
 
@@ -210,9 +248,6 @@ function scenario_3(freqCombine, lcmFreq)
                     if rest_time ~= 1
                         WaitSecs(1);
                     end
-
-                    % set trigger to 4
-                    % io64(ioObj,address,6);
 
                     % flicker target 3
                     time = clock;
@@ -222,8 +257,43 @@ function scenario_3(freqCombine, lcmFreq)
                         %Compute texture value based on display value from freq long matrixes
                         textureValue = freqCombine(:, indexflip) .* [1; 2; 4; 8];
 
-                        % flicker only one target
-                        textureValue = textureValue(3) + 1;
+                        % flicker only one target with random or none random
+                        if (random_target_enable == 0)
+                            textureValue = textureValue(3) + 1;
+                            % set trigger to 6
+                            trigger_value = 6;
+                            % io64(ioObj,address,trigger_value);
+                        else
+                            textureValue = textureValue(random_target(3)) + 1;
+
+                            % select trigger value (4+1 for 6.66Hz, 6+1 for 7.50Hz, 8+1 for 8.57Hz, 10+1 for 10Hz)
+                            %%% In our EEG recorder system, base trigger value is 1, when we set trigger value to 4, it save 4 + 1
+                            %%% then for 6.66Hz ---> trigger value is 5
+                            %%% then for 7.50Hz ---> trigger value is 7
+                            %%% then for 8.57Hz ---> trigger value is 9
+                            %%% then for 10Hz ---> trigger value is 11
+                            switch random_target(3)
+                                case 4
+                                    % set trigger to 4
+                                    trigger_value = 4;
+                                    % io64(ioObj,address,trigger_value);
+                                case 3
+                                    % set trigger to 6
+                                    trigger_value = 6;
+                                    % io64(ioObj,address,trigger_value);
+                                case 2
+                                    % set trigger to 8
+                                    trigger_value = 8;
+                                    % io64(ioObj,address,trigger_value);
+                                otherwise
+                                    % set trigger to 10
+                                    trigger_value = 10;
+                                    % io64(ioObj,address,trigger_value);
+                            end
+
+                        end
+
+                        disp(['Trigger value is: ', num2str(trigger_value)])
 
                         %Draw it on the back buffer
                         Screen('DrawTexture', win, texture(textureValue));
@@ -257,6 +327,7 @@ function scenario_3(freqCombine, lcmFreq)
                     else
                         WaitSecs(1);
                     end
+
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
 
@@ -269,9 +340,6 @@ function scenario_3(freqCombine, lcmFreq)
                         WaitSecs(1);
                     end
 
-                    % set trigger to 8
-                    % io64(ioObj,address,8);
-
                     % flicker target 2
                     time = clock;
 
@@ -280,8 +348,43 @@ function scenario_3(freqCombine, lcmFreq)
                         %Compute texture value based on display value from freq long matrixes
                         textureValue = freqCombine(:, indexflip) .* [1; 2; 4; 8];
 
-                        % flicker only one target
-                        textureValue = textureValue(2) + 1;
+                        % flicker only one target with random or none random
+                        if (random_target_enable == 0)
+                            textureValue = textureValue(2) + 1;
+                            % set trigger to 8
+                            trigger_value = 8;
+                            % io64(ioObj,address,trigger_value);
+                        else
+                            textureValue = textureValue(random_target(2)) + 1;
+
+                            % select trigger value (4+1 for 6.66Hz, 6+1 for 7.50Hz, 8+1 for 8.57Hz, 10+1 for 10Hz)
+                            %%% In our EEG recorder system, base trigger value is 1, when we set trigger value to 4, it save 4 + 1
+                            %%% then for 6.66Hz ---> trigger value is 5
+                            %%% then for 7.50Hz ---> trigger value is 7
+                            %%% then for 8.57Hz ---> trigger value is 9
+                            %%% then for 10Hz ---> trigger value is 11
+                            switch random_target(2)
+                                case 4
+                                    % set trigger to 4
+                                    trigger_value = 4;
+                                    % io64(ioObj,address,trigger_value);
+                                case 3
+                                    % set trigger to 6
+                                    trigger_value = 6;
+                                    % io64(ioObj,address,trigger_value);
+                                case 2
+                                    % set trigger to 8
+                                    trigger_value = 8;
+                                    % io64(ioObj,address,trigger_value);
+                                otherwise
+                                    % set trigger to 10
+                                    trigger_value = 10;
+                                    % io64(ioObj,address,trigger_value);
+                            end
+
+                        end
+
+                        disp(['Trigger value is: ', num2str(trigger_value)])
 
                         %Draw it on the back buffer
                         Screen('DrawTexture', win, texture(textureValue));
@@ -330,9 +433,6 @@ function scenario_3(freqCombine, lcmFreq)
                         WaitSecs(1);
                     end
 
-                    % set trigger to 10
-                    % io64(ioObj,address,10);
-
                     % flicker target 1
                     time = clock;
 
@@ -341,8 +441,43 @@ function scenario_3(freqCombine, lcmFreq)
                         %Compute texture value based on display value from freq long matrixes
                         textureValue = freqCombine(:, indexflip) .* [1; 2; 4; 8];
 
-                        % flicker only one target
-                        textureValue = textureValue(1) + 1;
+                        % flicker only one target with random or none random
+                        if (random_target_enable == 0)
+                            textureValue = textureValue(1) + 1;
+                            % set trigger to 10
+                            trigger_value = 10;
+                            % io64(ioObj,address,trigger_value);
+                        else
+                            textureValue = textureValue(random_target(1)) + 1;
+
+                            % select trigger value (4+1 for 6.66Hz, 6+1 for 7.50Hz, 8+1 for 8.57Hz, 10+1 for 10Hz)
+                            %%% In our EEG recorder system, base trigger value is 1, when we set trigger value to 4, it save 4 + 1
+                            %%% then for 6.66Hz ---> trigger value is 5
+                            %%% then for 7.50Hz ---> trigger value is 7
+                            %%% then for 8.57Hz ---> trigger value is 9
+                            %%% then for 10Hz ---> trigger value is 11
+                            switch random_target(1)
+                                case 4
+                                    % set trigger to 4
+                                    trigger_value = 4;
+                                    % io64(ioObj,address,trigger_value);
+                                case 3
+                                    % set trigger to 6
+                                    trigger_value = 6;
+                                    % io64(ioObj,address,trigger_value);
+                                case 2
+                                    % set trigger to 8
+                                    trigger_value = 8;
+                                    % io64(ioObj,address,trigger_value);
+                                otherwise
+                                    % set trigger to 10
+                                    trigger_value = 10;
+                                    % io64(ioObj,address,trigger_value);
+                            end
+
+                        end
+
+                        disp(['Trigger value is: ', num2str(trigger_value)])
 
                         %Draw it on the back buffer
                         Screen('DrawTexture', win, texture(textureValue));
@@ -369,7 +504,7 @@ function scenario_3(freqCombine, lcmFreq)
                     end
 
                     % set trigger to 0
-                    % io64(ioObj,address,0);   %output command
+                    % io64(ioObj,address,0);
 
                     % continue after rest_time for rest purpose
                     if rest_time ~= 1
@@ -377,6 +512,7 @@ function scenario_3(freqCombine, lcmFreq)
                     else
                         WaitSecs(1);
                     end
+
                     % show image for 1 second
                     Start = imread([pwd, '/', 'end_after_1_sec.png']);
 
