@@ -50,11 +50,11 @@ function scenario_3(freqCombine, lcmFreq)
 
     %%% set trigger
     SendTrigger = 1;
-    % if SendTrigger==1
-    %    ioObj = io64;
-    %    status = io64(ioObj);
-    %    address = hex2dec('3FD8'); %standard LPT1 output port address
-    % end
+    if SendTrigger==1
+       ioObj = io64;
+       status = io64(ioObj);
+       address = hex2dec('3FD8'); %standard LPT1 output port address
+    end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SET TEST PARAMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% MAIN TRY CATCH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,7 +114,7 @@ function scenario_3(freqCombine, lcmFreq)
                     pwd % current folder address
 
                     % set trigger to 0
-                    % io64(ioObj,address,0);
+                    io64(ioObj,address,0);
 
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
@@ -158,7 +158,7 @@ function scenario_3(freqCombine, lcmFreq)
                             textureValue = textureValue(4) + 1;
                             % set trigger to 4
                             trigger_value = 4;
-                            % io64(ioObj,address,trigger_value);
+                            io64(ioObj,address,trigger_value);
                         else
                             textureValue = textureValue(random_target(4)) + 1;
 
@@ -172,19 +172,19 @@ function scenario_3(freqCombine, lcmFreq)
                                 case 4
                                     % set trigger to 4
                                     trigger_value = 4;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 3
                                     % set trigger to 6
                                     trigger_value = 6;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 2
                                     % set trigger to 8
                                     trigger_value = 8;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 otherwise
                                     % set trigger to 10
                                     trigger_value = 10;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                             end
 
                         end
@@ -217,7 +217,7 @@ function scenario_3(freqCombine, lcmFreq)
                     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SHOWING TARGET 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     % set trigger to 0
-                    % io64(ioObj,address,0);
+                    io64(ioObj,address,0);
 
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
@@ -245,7 +245,7 @@ function scenario_3(freqCombine, lcmFreq)
                             textureValue = textureValue(3) + 1;
                             % set trigger to 6
                             trigger_value = 6;
-                            % io64(ioObj,address,trigger_value);
+                            io64(ioObj,address,trigger_value);
                         else
                             textureValue = textureValue(random_target(3)) + 1;
 
@@ -259,19 +259,19 @@ function scenario_3(freqCombine, lcmFreq)
                                 case 4
                                     % set trigger to 4
                                     trigger_value = 4;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 3
                                     % set trigger to 6
                                     trigger_value = 6;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 2
                                     % set trigger to 8
                                     trigger_value = 8;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 otherwise
                                     % set trigger to 10
                                     trigger_value = 10;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                             end
 
                         end
@@ -304,7 +304,7 @@ function scenario_3(freqCombine, lcmFreq)
                     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% EDN SHOWING TARGET 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     % set trigger to 0
-                    % io64(ioObj,address,0);
+                    io64(ioObj,address,0);
 
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
@@ -332,7 +332,7 @@ function scenario_3(freqCombine, lcmFreq)
                             textureValue = textureValue(2) + 1;
                             % set trigger to 8
                             trigger_value = 8;
-                            % io64(ioObj,address,trigger_value);
+                            io64(ioObj,address,trigger_value);
                         else
                             textureValue = textureValue(random_target(2)) + 1;
 
@@ -346,19 +346,19 @@ function scenario_3(freqCombine, lcmFreq)
                                 case 4
                                     % set trigger to 4
                                     trigger_value = 4;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 3
                                     % set trigger to 6
                                     trigger_value = 6;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 2
                                     % set trigger to 8
                                     trigger_value = 8;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 otherwise
                                     % set trigger to 10
                                     trigger_value = 10;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                             end
 
                         end
@@ -393,7 +393,7 @@ function scenario_3(freqCombine, lcmFreq)
                     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SHOWING TARGET 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     % set trigger to 0
-                    % io64(ioObj,address,0);
+                    io64(ioObj,address,0);
 
                     % show image for 1 second
                     Start = imread([pwd, '/', 'start_after_1_sec.png']);
@@ -421,7 +421,7 @@ function scenario_3(freqCombine, lcmFreq)
                             textureValue = textureValue(1) + 1;
                             % set trigger to 10
                             trigger_value = 10;
-                            % io64(ioObj,address,trigger_value);
+                            io64(ioObj,address,trigger_value);
                         else
                             textureValue = textureValue(random_target(1)) + 1;
 
@@ -435,19 +435,19 @@ function scenario_3(freqCombine, lcmFreq)
                                 case 4
                                     % set trigger to 4
                                     trigger_value = 4;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 3
                                     % set trigger to 6
                                     trigger_value = 6;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 case 2
                                     % set trigger to 8
                                     trigger_value = 8;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                                 otherwise
                                     % set trigger to 10
                                     trigger_value = 10;
-                                    % io64(ioObj,address,trigger_value);
+                                    io64(ioObj,address,trigger_value);
                             end
 
                         end
@@ -481,7 +481,7 @@ function scenario_3(freqCombine, lcmFreq)
                     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SHOWING TARGET 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     % set trigger to 0
-                    % io64(ioObj,address,0);
+                    io64(ioObj,address,0);
 
                     % show image for 1 second
                     Start = imread([pwd, '/', 'end_after_1_sec.png']);
